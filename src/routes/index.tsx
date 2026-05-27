@@ -925,7 +925,7 @@ function Pricing() {
               )}
 
               <article
-                className="h-full rounded-[28px] p-10 flex flex-col"
+                className="h-full rounded-[28px] p-10 flex flex-col items-center text-center"
                 style={{
                   background:
                     "linear-gradient(180deg, #fbf3ee 0%, #f6e8e1 100%)",
@@ -960,7 +960,7 @@ function Pricing() {
 
                 {/* Pill */}
                 <div
-                  className="mt-5 inline-flex items-center gap-2 self-start px-5 py-2 rounded-full text-[10.5px] tracking-luxe uppercase"
+                  className="mt-5 inline-flex items-center gap-2 px-5 py-2 rounded-full text-[10.5px] tracking-luxe uppercase"
                   style={{
                     fontFamily: "'Jost', sans-serif",
                     color: "var(--ink)",
@@ -974,7 +974,7 @@ function Pricing() {
 
                 {/* 14-Day Free Trial badge */}
                 <div
-                  className="mt-4 self-start rounded-xl px-5 py-3 text-center"
+                  className="mt-4 w-full rounded-xl px-5 py-3 text-center"
                   style={{
                     backgroundColor: "var(--gold)",
                     boxShadow: "0 8px 24px -10px rgba(160,110,60,0.45)",
