@@ -608,10 +608,10 @@ function Pricing() {
       price: "$5,000+",
       tagline: "Full-service. Everything handled.",
       featured: true,
-      topBadge: { label: "Most Popular", tone: "taupe" as const },
+      topBadge: { label: "Most Popular", tone: "pink" as const },
       cta: "Apply for Elite →",
       features: [
-        "3 Accounts",
+        "5 Accounts",
         "AI automation",
         "Complete AI Agents",
         "Facebook & Instagram ad management",
