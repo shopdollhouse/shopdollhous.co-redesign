@@ -15,18 +15,24 @@ const FONT_LUXE = "'Jost', sans-serif";
 function Nav() {
   return (
     <nav className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-6 md:px-12 py-6">
-      <Link to="/" className="flex flex-col leading-none">
+      <Link to="/" className="flex flex-col items-start leading-tight no-underline">
         <span
-          className="text-[var(--rose)] italic"
-          style={{ fontFamily: FONT_SCRIPT, fontSize: "1.4rem" }}
+          className="text-[var(--ink)]/55 font-normal not-italic"
+          style={{ fontFamily: FONT_DISPLAY, fontSize: "9px", letterSpacing: "4px" }}
         >
           the
         </span>
         <span
-          className="text-[var(--rose)] tracking-[0.18em] -mt-1"
-          style={{ fontFamily: FONT_DISPLAY, fontSize: "0.95rem" }}
+          className="text-[var(--ink)] italic"
+          style={{ fontFamily: FONT_DISPLAY, fontSize: "15px", letterSpacing: "4px", textTransform: "uppercase" }}
         >
-          DOLLHOUSE
+          Dollhouse
+        </span>
+        <span
+          className="text-[var(--gold)] not-italic font-semibold"
+          style={{ fontFamily: FONT_LUXE, fontSize: "6.5px", letterSpacing: "3px", textTransform: "uppercase", marginTop: "1px" }}
+        >
+          Brand Studio
         </span>
       </Link>
       <div

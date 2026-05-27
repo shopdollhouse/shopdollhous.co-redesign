@@ -109,27 +109,26 @@ function Nav() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10">
           <a
-            href="#"
-            className="flex flex-col leading-none shrink-0 relative z-10 px-4 py-2 -ml-4 rounded-2xl"
-            style={{
-              background: "rgba(255,255,255,0.45)",
-              backdropFilter: "blur(12px) saturate(140%)",
-              WebkitBackdropFilter: "blur(12px) saturate(140%)",
-              border: "1px solid rgba(255,255,255,0.5)",
-              boxShadow: "0 8px 24px -10px rgba(180,120,120,0.25)",
-            }}
+            href="/"
+            className="flex flex-col items-start leading-tight shrink-0 no-underline"
           >
             <span
-              className="text-[var(--rose)] italic"
-              style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "1.4rem" }}
+              className="text-[var(--ink)]/55 font-normal not-italic"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", letterSpacing: "4px" }}
             >
               the
             </span>
             <span
-              className="text-[var(--rose)] tracking-[0.18em] -mt-1"
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "0.95rem" }}
+              className="text-[var(--ink)] italic"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "4px", textTransform: "uppercase" }}
             >
-              DOLLHOUSE
+              Dollhouse
+            </span>
+            <span
+              className="text-[var(--gold)] not-italic font-semibold"
+              style={{ fontFamily: "'Jost', sans-serif", fontSize: "6.5px", letterSpacing: "3px", textTransform: "uppercase", marginTop: "1px" }}
+            >
+              Brand Studio
             </span>
           </a>
 
@@ -1251,22 +1250,22 @@ function Footer() {
   return (
     <footer className="border-t border-[var(--gold)]/15 py-12 px-6 text-center">
       <span
-        className="text-[var(--rose)] italic block"
-        style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "1.6rem" }}
+        className="text-[var(--ink)]/50 font-normal block"
+        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", letterSpacing: "4px" }}
       >
         the
       </span>
       <span
-        className="text-[var(--rose)] tracking-[0.22em] -mt-1 inline-block"
-        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem" }}
+        className="text-[var(--ink)] italic inline-block"
+        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "4px", textTransform: "uppercase" }}
       >
-        DOLLHOUSE
+        Dollhouse
       </span>
       <p
-        className="text-[10px] tracking-luxe uppercase text-[var(--gold)] mt-2"
-        style={{ fontFamily: "'Jost', sans-serif" }}
+        className="text-[var(--gold)] font-semibold mt-1"
+        style={{ fontFamily: "'Jost', sans-serif", fontSize: "6.5px", letterSpacing: "3px", textTransform: "uppercase" }}
       >
-        brand studio
+        Brand Studio
       </p>
       <p
         className="text-xs text-[var(--ink)]/45 mt-6"
