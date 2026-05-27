@@ -667,10 +667,7 @@ function Pricing() {
                   className="absolute -top-1 left-1/2 -translate-x-1/2 z-10 px-6 py-2 rounded-full text-[10px] tracking-luxe uppercase whitespace-nowrap"
                   style={{
                     fontFamily: "'Jost', sans-serif",
-                    backgroundColor:
-                      t.topBadge.tone === "gold"
-                        ? "var(--gold)"
-                        : "color-mix(in oklab, var(--gold) 35%, #d9b9a8)",
+                    backgroundColor: "var(--gold)",
                     color: "var(--ink)",
                     boxShadow: "0 8px 20px -10px rgba(120,80,60,0.35)",
                   }}
