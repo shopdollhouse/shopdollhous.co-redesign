@@ -447,6 +447,8 @@ function Pricing() {
       name: "Starter",
       price: "$1,000",
       tagline: "Get visible. Get consistent.",
+      topBadge: { label: "Start Here", tone: "gold" as const },
+      cta: "Get Started →",
       features: [
         "Social media management (1 platform)",
         "Content creation & scheduling",
@@ -460,6 +462,8 @@ function Pricing() {
       price: "$2,500",
       tagline: "More reach. More leads. More revenue.",
       featured: true,
+      topBadge: { label: "Most Popular", tone: "taupe" as const },
+      cta: "Book a Call →",
       features: [
         "Social media management (all platforms)",
         "Social media ad creation & management",
@@ -473,6 +477,7 @@ function Pricing() {
       name: "Elite",
       price: "$5,000+",
       tagline: "Full-service. Everything handled.",
+      cta: "Apply for Elite →",
       features: [
         "Facebook & Instagram ad management",
         "Social media management (all platforms)",
@@ -500,147 +505,172 @@ function Pricing() {
         title="Choose your plan"
         italic="Done-for-you monthly retainer. 3-month minimum."
       />
-      <div className="mt-14 max-w-6xl mx-auto space-y-8">
+      <div className="mt-20 max-w-7xl mx-auto grid md:grid-cols-3 gap-8 lg:gap-10">
         {tiers.map((t) => {
-          const isDark = !!t.featured;
+          const isFilled = !!t.featured;
           return (
-            <article
-              key={t.name}
-              className={`relative rounded-[28px] overflow-hidden ${
-                isDark
-                  ? "bg-[var(--ink)] text-[var(--cream)] shadow-[0_30px_60px_-25px_rgba(60,30,30,0.45)]"
-                  : ""
-              }`}
-              style={
-                isDark
-                  ? undefined
-                  : {
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(252,238,235,0.92) 100%)",
-                      border: "1px solid color-mix(in oklab, var(--gold) 45%, transparent)",
-                      boxShadow:
-                        "0 25px 55px -25px rgba(180,120,120,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
-                    }
-              }
-            >
-              {t.featured && (
+            <div key={t.name} className="relative pt-8">
+              {t.topBadge && (
                 <span
-                  className="absolute top-6 right-6 text-[10px] tracking-luxe uppercase px-3 py-1.5 rounded-full"
+                  className="absolute -top-1 left-1/2 -translate-x-1/2 z-10 px-6 py-2 rounded-full text-[10px] tracking-luxe uppercase whitespace-nowrap"
                   style={{
-                    backgroundColor: "var(--gold)",
-                    color: "var(--ink)",
                     fontFamily: "'Jost', sans-serif",
+                    backgroundColor:
+                      t.topBadge.tone === "gold"
+                        ? "var(--gold)"
+                        : "color-mix(in oklab, var(--gold) 35%, #d9b9a8)",
+                    color: "var(--ink)",
+                    boxShadow: "0 8px 20px -10px rgba(120,80,60,0.35)",
                   }}
                 >
-                  Most Popular
+                  {t.topBadge.label}
                 </span>
               )}
 
-              <div className="p-10 md:p-12">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8 border-b border-current/10">
-                  <div>
-                    <p
-                      className="text-[var(--gold)] text-[11px] tracking-luxe uppercase"
-                      style={{ fontFamily: "'Jost', sans-serif" }}
-                    >
-                      The {t.name} Package
-                    </p>
-                    <h3
-                      className={`mt-2 italic ${isDark ? "text-[var(--cream)]/90" : "text-[var(--ink)]/80"}`}
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
-                      }}
-                    >
-                      {t.tagline}
-                    </h3>
-                  </div>
-                  <div className="text-right whitespace-nowrap">
-                    <span
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: "clamp(2.75rem, 4vw, 3.5rem)",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {t.price}
-                    </span>
-                    <span
-                      className={`ml-1 ${isDark ? "text-[var(--cream)]/60" : "text-[var(--ink)]/55"}`}
-                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem" }}
-                    >
-                      /mo USD
-                    </span>
-                  </div>
-                </div>
-
-                {/* At-a-glance grid */}
+              <article
+                className="h-full rounded-[28px] p-10 flex flex-col"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #fbf3ee 0%, #f6e8e1 100%)",
+                  border:
+                    "1px solid color-mix(in oklab, var(--gold) 35%, transparent)",
+                  boxShadow:
+                    "0 30px 60px -30px rgba(160,110,95,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
+                }}
+              >
+                {/* Eyebrow */}
                 <p
-                  className="mt-8 text-[var(--gold)] text-[11px] tracking-luxe uppercase"
+                  className="text-[var(--gold)] text-[11px] tracking-luxe uppercase"
                   style={{ fontFamily: "'Jost', sans-serif" }}
                 >
-                  What's Included
+                  The {t.name}
                 </p>
-                <ul className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {t.features.map((f, i) => (
+
+                {/* Title */}
+                <h3
+                  className="mt-3 italic text-[var(--ink)]"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(1.75rem, 2.2vw, 2.25rem)",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {t.name} Retainer
+                </h3>
+
+                {/* Pill */}
+                <div
+                  className="mt-5 inline-flex items-center gap-2 self-start px-5 py-2 rounded-full text-[10.5px] tracking-luxe uppercase"
+                  style={{
+                    fontFamily: "'Jost', sans-serif",
+                    color: "var(--ink)",
+                    border:
+                      "1px solid color-mix(in oklab, var(--gold) 40%, transparent)",
+                    backgroundColor: "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  <span style={{ color: "var(--gold)" }}>✦</span> Monthly Retainer
+                </div>
+
+                {/* Price */}
+                <div className="mt-7 flex items-baseline gap-2">
+                  <span
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: "clamp(3.5rem, 5vw, 4.5rem)",
+                      lineHeight: 1,
+                      fontStyle: "italic",
+                    }}
+                  >
+                    {t.price}
+                  </span>
+                  <span
+                    className="text-[var(--ink)]/55"
+                    style={{
+                      fontFamily: "'Jost', sans-serif",
+                      fontSize: "0.8rem",
+                      letterSpacing: "0.15em",
+                    }}
+                  >
+                    USD/MO
+                  </span>
+                </div>
+
+                {/* Tagline */}
+                <p
+                  className="mt-6 text-[var(--ink)]/75"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {t.tagline}
+                </p>
+
+                {/* Divider w/ heart */}
+                <div className="mt-7 flex items-center gap-3">
+                  <span
+                    className="flex-1 h-px"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                    }}
+                  />
+                  <span style={{ color: "var(--gold)", fontSize: "0.7rem" }}>♥</span>
+                  <span
+                    className="flex-1 h-px"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                    }}
+                  />
+                </div>
+
+                {/* Features */}
+                <ul className="mt-7 space-y-3.5 flex-1">
+                  {t.features.map((f) => (
                     <li
                       key={f}
-                      className="rounded-2xl p-4 min-h-[110px] flex flex-col justify-between"
+                      className="flex items-start gap-3 text-[var(--ink)]/85"
                       style={{
-                        background: isDark
-                          ? "rgba(255,255,255,0.05)"
-                          : "color-mix(in oklab, var(--cream) 55%, white)",
-                        border: `1px solid ${
-                          isDark
-                            ? "rgba(255,255,255,0.08)"
-                            : "color-mix(in oklab, var(--gold) 25%, transparent)"
-                        }`,
+                        fontFamily: "'Jost', sans-serif",
+                        fontSize: "0.92rem",
                       }}
                     >
                       <span
-                        className="text-[var(--gold)] text-[9.5px] tracking-luxe uppercase"
-                        style={{ fontFamily: "'Jost', sans-serif" }}
+                        className="mt-1 shrink-0"
+                        style={{ color: "var(--gold)", fontSize: "0.7rem" }}
                       >
-                        {String(i + 1).padStart(2, "0")}
+                        ✦
                       </span>
-                      <span
-                        className={`mt-2 leading-snug ${
-                          isDark ? "text-[var(--cream)]/90" : "text-[var(--ink)]/85"
-                        }`}
-                        style={{
-                          fontFamily: "'Cormorant Garamond', serif",
-                          fontSize: "1.05rem",
-                        }}
-                      >
-                        {f}
-                      </span>
+                      <span>{f}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* CTA */}
-                <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <p
-                    className={`italic text-sm ${isDark ? "text-[var(--cream)]/55" : "text-[var(--ink)]/50"}`}
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  >
-                    3-month minimum · all communication by email
-                  </p>
-                  <a
-                    href="#contact"
-                    className={`inline-block text-center rounded-full text-[11px] tracking-luxe uppercase px-8 py-3.5 transition ${
-                      isDark
-                        ? "bg-[var(--cream)] text-[var(--ink)] hover:opacity-90"
-                        : "bg-[var(--ink)] text-[var(--cream)] hover:opacity-90"
-                    }`}
-                    style={{ fontFamily: "'Jost', sans-serif" }}
-                  >
-                    Book a Discovery Call →
-                  </a>
-                </div>
-              </div>
-            </article>
+                <a
+                  href="#contact"
+                  className="mt-10 block text-center rounded-full text-[11px] tracking-luxe uppercase px-8 py-4 transition hover:opacity-90"
+                  style={{
+                    fontFamily: "'Jost', sans-serif",
+                    ...(isFilled
+                      ? {
+                          backgroundColor: "var(--ink)",
+                          color: "var(--cream)",
+                        }
+                      : {
+                          backgroundColor: "transparent",
+                          color: "var(--ink)",
+                          border: "1.5px solid var(--ink)",
+                        }),
+                  }}
+                >
+                  {t.cta}
+                </a>
+              </article>
+            </div>
           );
         })}
       </div>
