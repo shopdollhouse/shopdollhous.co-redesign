@@ -309,12 +309,23 @@ function Hero() {
         </p>
 
         <div
-          className="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
+          className="reveal mt-9 flex flex-col items-center justify-center gap-4"
           style={{ animationDelay: "0.65s" }}
         >
           <a href="#pricing" className="btn-ink">
             Book a Discovery Call <span aria-hidden>→</span>
           </a>
+          <div
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/40 bg-white/40 backdrop-blur-sm px-4 py-1.5 text-[var(--gold)]"
+          >
+            <span style={{ fontSize: "0.65rem" }}>★</span>
+            <span
+              className="text-[10px] tracking-luxe uppercase font-medium"
+              style={{ fontFamily: "'Jost', sans-serif" }}
+            >
+              14-day free trial
+            </span>
+          </div>
           <a href="#services" className="btn-ghost">
             See how it works <span aria-hidden>↓</span>
           </a>
