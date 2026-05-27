@@ -596,7 +596,7 @@ function Pricing() {
       features: [
         "1 Account",
         "AI automation",
-        "1 AI Agents",
+        "1 AI Agent",
         "Social media management (1 platform)",
         "Content creation & scheduling",
         "Branded posts published for you",
@@ -612,9 +612,9 @@ function Pricing() {
       topBadge: { label: "Most Popular", tone: "taupe" as const },
       cta: "Book a Call →",
       features: [
-        "5 Accounts",
+        "3 Accounts",
         "AI automation",
-        "Complete AI Agents",
+        "2 AI Agents",
         "Social media management (all platforms)",
         "Social media ad creation & management",
         "Email marketing automations",
@@ -631,7 +631,7 @@ function Pricing() {
       features: [
         "3 Accounts",
         "AI automation",
-        "2 AI Agents",
+        "Complete AI Agents",
         "Facebook & Instagram ad management",
         "Social media management (all platforms)",
         "Google ad campaigns",
@@ -708,7 +708,7 @@ function Pricing() {
                     lineHeight: 1.1,
                   }}
                 >
-                  {t.name} Retainer
+                  {t.name}
                 </h3>
 
                 {/* Pill */}
