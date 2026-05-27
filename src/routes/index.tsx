@@ -125,7 +125,17 @@ function Nav() {
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10">
-          <a href="#" className="flex flex-col leading-none shrink-0">
+          <a
+            href="#"
+            className="flex flex-col leading-none shrink-0 relative z-10 px-4 py-2 -ml-4 rounded-2xl"
+            style={{
+              background: "rgba(255,255,255,0.45)",
+              backdropFilter: "blur(12px) saturate(140%)",
+              WebkitBackdropFilter: "blur(12px) saturate(140%)",
+              border: "1px solid rgba(255,255,255,0.5)",
+              boxShadow: "0 8px 24px -10px rgba(180,120,120,0.25)",
+            }}
+          >
             <span
               className="text-[var(--rose)] italic"
               style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "1.4rem" }}
