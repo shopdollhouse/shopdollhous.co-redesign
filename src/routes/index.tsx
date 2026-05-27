@@ -4,24 +4,7 @@ import bgImage from "@/assets/password-bg.jpg";
 import roseAccent from "@/assets/rose-accent.png";
 import archMark from "@/assets/arch-mark.svg";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: "The Dollhouse Brand Studio — Done-For-You Social Media" },
-      {
-        name: "description",
-        content:
-          "AI-powered social media content, scheduling, and analytics — done for you, every single day. Branded content, ads, and strategy from The Dollhouse.",
-      },
-      { property: "og:title", content: "The Dollhouse Brand Studio" },
-      {
-        property: "og:description",
-        content: "Your business, everywhere online — done for you, every single day.",
-      },
-    ],
-  }),
-});
+export const Route = createFileRoute("/")({ component: Index });
 
 /* ─── Icons ───────────────────────────────────────────── */
 const LockIcon = ({ className = "" }) => (

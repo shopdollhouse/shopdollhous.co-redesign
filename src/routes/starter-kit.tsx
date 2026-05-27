@@ -4,25 +4,7 @@ import bgImage from "@/assets/password-bg.jpg";
 import roseAccent from "@/assets/rose-accent.png";
 import archMark from "@/assets/arch-mark.svg";
 
-export const Route = createFileRoute("/starter-kit")({
-  component: StarterKitPage,
-  head: () => ({
-    meta: [
-      { title: "The Starter Kit — The Dollhouse Brand Studio" },
-      {
-        name: "description",
-        content:
-          "Build your brand foundation with the Brand Kit, AI Prompt Kit, and Brand Workbook — a one-time, done-with-you starter for new founders.",
-      },
-      { property: "og:title", content: "The Starter Kit — The Dollhouse" },
-      {
-        property: "og:description",
-        content:
-          "Brand Kit, AI Prompt Kit, and Brand Workbook — everything you need to launch a polished, on-brand business.",
-      },
-    ],
-  }),
-});
+export const Route = createFileRoute("/starter-kit")({ component: StarterKitPage });
 
 const FONT_DISPLAY = "'Cormorant Garamond', serif";
 const FONT_SCRIPT = "'Pinyon Script', cursive";
