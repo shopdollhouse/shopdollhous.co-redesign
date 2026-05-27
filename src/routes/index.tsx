@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import bgImage from "@/assets/password-bg.jpg";
 import roseAccent from "@/assets/rose-accent.png";
@@ -648,13 +648,13 @@ function StarterKitCTA() {
           AI Prompt Kit, and Brand Workbook — everything you need to build a
           solid brand foundation.
         </p>
-        <a
-          href="https://shopdollhouse.co/starter-kit"
+        <Link
+          to="/starter-kit"
           className="mt-8 inline-block rounded-full bg-[var(--cream)] text-[var(--ink)] text-[11px] tracking-luxe uppercase px-8 py-4 hover:opacity-90 transition"
           style={{ fontFamily: "'Jost', sans-serif" }}
         >
           See the Starter Kit →
-        </a>
+        </Link>
       </div>
     </section>
   );
