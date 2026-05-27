@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import bgImage from "@/assets/password-bg.jpg";
 import roseAccent from "@/assets/rose-accent.png";
+import archMark from "@/assets/arch-mark.svg";
 
 export const Route = createFileRoute("/")({
   component: Index,
