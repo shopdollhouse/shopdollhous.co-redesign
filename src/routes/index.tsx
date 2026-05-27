@@ -608,10 +608,10 @@ function Pricing() {
       price: "$5,000+",
       tagline: "Full-service. Everything handled.",
       featured: true,
-      topBadge: { label: "Most Popular", tone: "taupe" as const },
+      topBadge: { label: "Most Popular", tone: "pink" as const },
       cta: "Apply for Elite →",
       features: [
-        "3 Accounts",
+        "5 Accounts",
         "AI automation",
         "Complete AI Agents",
         "Facebook & Instagram ad management",
@@ -667,9 +667,15 @@ function Pricing() {
                   className="absolute -top-1 left-1/2 -translate-x-1/2 z-10 px-6 py-2 rounded-full text-[10px] tracking-luxe uppercase whitespace-nowrap"
                   style={{
                     fontFamily: "'Jost', sans-serif",
-                    backgroundColor: "var(--gold)",
+                    backgroundColor:
+                      t.topBadge.tone === "pink"
+                        ? "#c97a7a"
+                        : "var(--gold)",
                     color: "var(--ink)",
-                    boxShadow: "0 8px 20px -10px rgba(120,80,60,0.35)",
+                    boxShadow:
+                      t.topBadge.tone === "pink"
+                        ? "0 8px 20px -10px rgba(201,122,122,0.45)"
+                        : "0 8px 20px -10px rgba(120,80,60,0.35)",
                   }}
                 >
                   {t.topBadge.label}
@@ -682,9 +688,12 @@ function Pricing() {
                   background:
                     "linear-gradient(180deg, #fbf3ee 0%, #f6e8e1 100%)",
                   border:
-                    "1px solid color-mix(in oklab, var(--gold) 35%, transparent)",
-                  boxShadow:
-                    "0 30px 60px -30px rgba(160,110,95,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
+                    isFilled
+                      ? "1.5px solid rgba(201,122,122,0.45)"
+                      : "1px solid color-mix(in oklab, var(--gold) 35%, transparent)",
+                  boxShadow: isFilled
+                    ? "0 30px 60px -30px rgba(201,122,122,0.35), inset 0 1px 0 rgba(255,255,255,0.6)"
+                    : "0 30px 60px -30px rgba(160,110,95,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
                 }}
               >
                 {/* Eyebrow */}
@@ -777,15 +786,19 @@ function Pricing() {
                     className="flex-1 h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                        isFilled
+                          ? "linear-gradient(90deg, transparent, rgba(201,122,122,0.5), transparent)"
+                          : "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
                     }}
                   />
-                  <span style={{ color: "var(--gold)", fontSize: "0.7rem" }}>♥</span>
+                  <span style={{ color: isFilled ? "#c97a7a" : "var(--gold)", fontSize: "0.7rem" }}>♥</span>
                   <span
                     className="flex-1 h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                        isFilled
+                          ? "linear-gradient(90deg, transparent, rgba(201,122,122,0.5), transparent)"
+                          : "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
                     }}
                   />
                 </div>
@@ -803,7 +816,7 @@ function Pricing() {
                     >
                       <span
                         className="mt-1 shrink-0"
-                        style={{ color: "var(--gold)", fontSize: "0.7rem" }}
+                        style={{ color: isFilled ? "#c97a7a" : "var(--gold)", fontSize: "0.7rem" }}
                       >
                         ✦
                       </span>
