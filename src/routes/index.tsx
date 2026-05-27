@@ -850,7 +850,7 @@ function Pricing() {
       price: "$5,000+",
       tagline: "Full-service. Everything handled.",
       featured: true,
-      topBadge: { label: "Most Popular", tone: "pink" as const },
+      topBadge: { label: "Most Popular", tone: "gold" as const },
       cta: "Apply for Elite →",
       features: [
         "5 Accounts",
