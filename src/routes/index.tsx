@@ -245,6 +245,18 @@ function Hero() {
       <DoorIcon className="hidden lg:block absolute bottom-[14%] right-[7%] w-20 h-28 text-[var(--gold)]/45 reveal-soft" />
 
       <div className="relative z-10 w-full max-w-[680px] text-center">
+        {/* Soft white blur halo behind logo + header for readability */}
+        <div
+          aria-hidden
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none"
+          style={{
+            width: "min(120%, 780px)",
+            height: "110%",
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,0) 80%)",
+            filter: "blur(28px)",
+          }}
+        />
         <div
           className="reveal inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/55 bg-white/40 backdrop-blur-md px-5 py-2 text-[var(--gold)]"
           style={{ animationDelay: "0.05s" }}
