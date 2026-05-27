@@ -398,52 +398,147 @@ function TrustBar() {
 /* ─── Services ────────────────────────────────────────── */
 function ContentCalendarCard() {
   const days = [
-    { d: "Mon", t: "IG" },
-    { d: "Tue", t: "" },
-    { d: "Wed", t: "TK" },
-    { d: "Thu", t: "FB" },
-    { d: "Fri", t: "IG" },
-    { d: "Sat", t: "G" },
-    { d: "Sun", t: "TK" },
+    { d: "Mon", t: "IG", c: "#E1306C" },
+    { d: "Tue", t: "", c: "" },
+    { d: "Wed", t: "TK", c: "#111" },
+    { d: "Thu", t: "FB", c: "#1877F2" },
+    { d: "Fri", t: "IG", c: "#E1306C" },
+    { d: "Sat", t: "G", c: "#EA4335" },
+    { d: "Sun", t: "TK", c: "#111" },
   ];
   return (
-    <div className="rounded-2xl bg-white/70 backdrop-blur-md border border-white/80 shadow-[0_25px_50px_-25px_rgba(180,120,120,0.3)] p-7">
-      <div className="flex justify-between items-baseline">
-        <p
-          className="text-[var(--ink)]"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.25rem" }}
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-6 -z-10 rounded-[36px] opacity-70 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 30% 20%, rgba(232,180,180,0.55), transparent 70%), radial-gradient(50% 50% at 80% 80%, rgba(214,176,140,0.45), transparent 70%)",
+        }}
+      />
+      <div
+        className="relative rounded-[28px] overflow-hidden border border-white/90 shadow-[0_35px_70px_-30px_rgba(160,100,100,0.45)]"
+        style={{
+          background:
+            "linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(252,236,232,0.88) 100%)",
+          backdropFilter: "blur(14px)",
+        }}
+      >
+        <div
+          className="px-7 pt-6 pb-5"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(232,180,180,0.35), rgba(214,176,140,0.25) 60%, transparent)",
+          }}
         >
-          June 2026
-        </p>
-        <p className="text-[10px] tracking-luxe uppercase text-[var(--gold)]" style={{ fontFamily: "'Jost', sans-serif" }}>
-          12 posts queued
-        </p>
-      </div>
-      <div className="grid grid-cols-7 gap-2 mt-5">
-        {days.map((d) => (
-          <div
-            key={d.d}
-            className="aspect-square rounded-lg bg-[var(--blush)]/70 flex flex-col items-center justify-center"
-          >
-            <span className="text-[9px] uppercase text-[var(--ink)]/55" style={{ fontFamily: "'Jost', sans-serif" }}>
-              {d.d}
-            </span>
-            {d.t && <span className="mt-1 text-[10px] text-[var(--rose)] font-medium">{d.t}</span>}
-          </div>
-        ))}
-      </div>
-      <div className="mt-5 space-y-2.5">
-        {[["Instagram", "5 posts"], ["TikTok", "4 posts"], ["Facebook", "2 posts"], ["Google", "1 post"]].map(
-          ([p, c]) => (
-            <div
-              key={p}
-              className="flex justify-between text-sm border-b border-[var(--gold)]/15 pb-2 last:border-0"
-            >
-              <span className="text-[var(--ink)]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{p}</span>
-              <span className="text-[var(--ink)]/55 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>{c}</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span
+                className="inline-flex w-7 h-7 rounded-full items-center justify-center text-[var(--cream)]"
+                style={{ background: "linear-gradient(135deg, var(--rose), var(--gold))" }}
+              >
+                <span className="text-[11px]">✦</span>
+              </span>
+              <p
+                className="text-[var(--ink)]"
+                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.35rem" }}
+              >
+                June 2026
+              </p>
             </div>
-          ),
-        )}
+            <span
+              className="text-[9px] tracking-luxe uppercase text-[var(--gold)] px-2.5 py-1 rounded-full border border-[var(--gold)]/40 bg-white/60"
+              style={{ fontFamily: "'Jost', sans-serif" }}
+            >
+              12 posts queued
+            </span>
+          </div>
+        </div>
+
+        <div className="px-7 pb-7">
+          <div className="grid grid-cols-7 gap-2 mt-2">
+            {days.map((d, i) => {
+              const isToday = i === 4;
+              return (
+                <div
+                  key={d.d}
+                  className="relative aspect-square rounded-xl flex flex-col items-center justify-center overflow-hidden"
+                  style={{
+                    background: isToday
+                      ? "linear-gradient(160deg, var(--rose), #d6a07a)"
+                      : "rgba(247,228,223,0.7)",
+                    boxShadow: isToday
+                      ? "0 10px 22px -10px rgba(201,122,122,0.55)"
+                      : "inset 0 0 0 1px rgba(214,176,140,0.18)",
+                  }}
+                >
+                  <span
+                    className="text-[9px] uppercase"
+                    style={{
+                      fontFamily: "'Jost', sans-serif",
+                      color: isToday ? "rgba(255,255,255,0.85)" : "rgba(60,40,40,0.55)",
+                    }}
+                  >
+                    {d.d}
+                  </span>
+                  {d.t && (
+                    <span
+                      className="mt-1 text-[9px] font-semibold px-1.5 py-[1px] rounded-full"
+                      style={{
+                        backgroundColor: "#fff",
+                        color: d.c,
+                      }}
+                    >
+                      {d.t}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-5 grid grid-cols-3 gap-2">
+            {[
+              { bg: "linear-gradient(135deg,#f6c6c0,#e8a6a0)", label: "Reel" },
+              { bg: "linear-gradient(135deg,#efd9c2,#d6a07a)", label: "Story" },
+              { bg: "linear-gradient(135deg,#f3d4d4,#c97a7a)", label: "Post" },
+            ].map((p, i) => (
+              <div
+                key={i}
+                className="aspect-[4/3] rounded-lg relative overflow-hidden"
+                style={{ background: p.bg }}
+              >
+                <span className="absolute bottom-1.5 left-2 text-[8px] tracking-luxe uppercase text-white/95"
+                  style={{ fontFamily: "'Jost', sans-serif" }}>
+                  {p.label}
+                </span>
+                <span className="absolute top-1.5 right-2 text-[10px] text-white/90">✦</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 space-y-2.5">
+            {[
+              ["Instagram", "5 posts", "#E1306C"],
+              ["TikTok", "4 posts", "#111111"],
+              ["Facebook", "2 posts", "#1877F2"],
+              ["Google", "1 post", "#EA4335"],
+            ].map(([p, c, dot]) => (
+              <div
+                key={p}
+                className="flex justify-between items-center text-sm border-b border-[var(--gold)]/15 pb-2 last:border-0"
+              >
+                <span className="flex items-center gap-2 text-[var(--ink)]"
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: dot }} />
+                  {p}
+                </span>
+                <span className="text-[var(--ink)]/55 text-xs"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}>{c}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -457,31 +552,116 @@ function AnalyticsCard() {
     ["Profile Visits", "2.1K", "+44%"],
   ];
   return (
-    <div className="rounded-2xl bg-white/70 backdrop-blur-md border border-white/80 shadow-[0_25px_50px_-25px_rgba(180,120,120,0.3)] p-7">
-      <Eyebrow>This Month</Eyebrow>
-      <div className="grid grid-cols-2 gap-3 mt-4">
-        {stats.map(([l, v, c]) => (
-          <div key={l} className="rounded-xl bg-[var(--blush)]/60 p-4">
-            <p className="text-[9px] uppercase tracking-wider text-[var(--ink)]/55" style={{ fontFamily: "'Jost', sans-serif" }}>
-              {l}
-            </p>
-            <p
-              className="text-[var(--ink)] mt-1"
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.85rem" }}
-            >
-              {v}
-            </p>
-            <p className="text-[10px] text-[var(--gold)] mt-0.5">{c} vs last month</p>
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-6 -z-10 rounded-[36px] opacity-70 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 70% 20%, rgba(214,176,140,0.5), transparent 70%), radial-gradient(50% 50% at 20% 80%, rgba(232,180,180,0.5), transparent 70%)",
+        }}
+      />
+      <div
+        className="relative rounded-[28px] overflow-hidden border border-white/90 shadow-[0_35px_70px_-30px_rgba(160,100,100,0.45)]"
+        style={{
+          background:
+            "linear-gradient(160deg, rgba(255,255,255,0.94) 0%, rgba(250,234,228,0.9) 100%)",
+          backdropFilter: "blur(14px)",
+        }}
+      >
+        <div
+          className="px-7 pt-6 pb-6"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(201,122,122,0.18), rgba(214,176,140,0.18) 60%, transparent)",
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <Eyebrow>This Month</Eyebrow>
+            <span className="text-[9px] tracking-luxe uppercase text-[var(--gold)] flex items-center gap-1"
+              style={{ fontFamily: "'Jost', sans-serif" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+              Live
+            </span>
           </div>
-        ))}
-      </div>
-      <p className="text-[9px] uppercase tracking-luxe text-[var(--ink)]/55 mt-5" style={{ fontFamily: "'Jost', sans-serif" }}>
-        Weekly reach
-      </p>
-      <div className="mt-2 flex items-end gap-1 h-14">
-        {[40, 55, 35, 70, 60, 85, 95].map((h, i) => (
-          <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, backgroundColor: "var(--rose)", opacity: 0.7 }} />
-        ))}
+          <div className="mt-3 flex items-end justify-between">
+            <div>
+              <p className="text-[10px] uppercase tracking-luxe text-[var(--ink)]/55"
+                style={{ fontFamily: "'Jost', sans-serif" }}>
+                Total Reach
+              </p>
+              <p className="text-[var(--ink)] leading-none mt-1"
+                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.75rem" }}>
+                14,238
+              </p>
+              <p className="text-[11px] text-[var(--rose)] mt-1"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                ▲ 38% vs last month
+              </p>
+            </div>
+            <svg viewBox="0 0 120 50" className="w-28 h-12 -mb-1">
+              <defs>
+                <linearGradient id="spark" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="#c97a7a" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#c97a7a" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M0 38 L20 30 L40 34 L60 22 L80 18 L100 10 L120 4 L120 50 L0 50 Z"
+                fill="url(#spark)" />
+              <path d="M0 38 L20 30 L40 34 L60 22 L80 18 L100 10 L120 4"
+                fill="none" stroke="#c97a7a" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="px-7 pb-7">
+          <div className="grid grid-cols-2 gap-3 mt-4">
+            {stats.map(([l, v, c]) => (
+              <div key={l} className="rounded-xl p-4 relative overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.85), rgba(247,228,223,0.7))",
+                  boxShadow: "inset 0 0 0 1px rgba(214,176,140,0.18)",
+                }}>
+                <p className="text-[9px] uppercase tracking-wider text-[var(--ink)]/55"
+                  style={{ fontFamily: "'Jost', sans-serif" }}>
+                  {l}
+                </p>
+                <p className="text-[var(--ink)] mt-1"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.85rem" }}>
+                  {v}
+                </p>
+                <p className="text-[10px] text-[var(--rose)] mt-0.5 flex items-center gap-1">
+                  <span>▲</span>{c}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-[9px] uppercase tracking-luxe text-[var(--ink)]/55 mt-5"
+            style={{ fontFamily: "'Jost', sans-serif" }}>
+            Weekly reach
+          </p>
+          <div className="mt-2 flex items-end gap-1.5 h-16">
+            {[40, 55, 35, 70, 60, 85, 95].map((h, i) => (
+              <div key={i} className="flex-1 rounded-t-md relative overflow-hidden"
+                style={{
+                  height: `${h}%`,
+                  background: "linear-gradient(180deg, var(--rose), #d6a07a)",
+                  boxShadow: "0 6px 14px -8px rgba(201,122,122,0.5)",
+                }}>
+                <div className="absolute inset-x-0 top-0 h-1/3"
+                  style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.35), transparent)" }} />
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex justify-between text-[8px] uppercase tracking-wider text-[var(--ink)]/40"
+            style={{ fontFamily: "'Jost', sans-serif" }}>
+            {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+              <span key={i} className="flex-1 text-center">{d}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -489,39 +669,107 @@ function AnalyticsCard() {
 
 function CaptionCard() {
   return (
-    <div className="rounded-2xl bg-[var(--ink)] text-[var(--cream)] shadow-[0_25px_50px_-25px_rgba(80,40,40,0.4)] p-7">
-      <p className="text-[10px] tracking-luxe uppercase text-[var(--gold)]" style={{ fontFamily: "'Jost', sans-serif" }}>
-        ✦ AI Content Studio
-      </p>
-      <p className="text-xs text-[var(--cream)]/55 mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-        Generating caption…
-      </p>
+    <div className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-6 -z-10 rounded-[36px] opacity-70 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(50% 50% at 30% 30%, rgba(214,176,140,0.5), transparent 70%), radial-gradient(60% 60% at 70% 80%, rgba(201,122,122,0.45), transparent 70%)",
+        }}
+      />
+      <div
+        className="relative rounded-[28px] overflow-hidden text-[var(--cream)] shadow-[0_35px_70px_-25px_rgba(40,20,20,0.55)] border border-white/10"
+        style={{
+          background:
+            "linear-gradient(160deg, #2a1f1d 0%, #1a1413 55%, #241a18 100%)",
+        }}
+      >
+        <div
+          aria-hidden
+          className="absolute -top-20 -right-16 w-56 h-56 rounded-full opacity-50 blur-3xl"
+          style={{ background: "radial-gradient(circle, #d6b08c, transparent 70%)" }}
+        />
 
-      <div className="mt-6">
-        <p className="text-[9px] tracking-luxe uppercase text-[var(--cream)]/50" style={{ fontFamily: "'Jost', sans-serif" }}>
-          Prompt
-        </p>
-        <p
-          className="italic mt-2 text-[var(--cream)]/90"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}
-        >
-          Behind the scenes at our salon this Saturday 🌸
-        </p>
-      </div>
+        <div className="relative p-7">
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] tracking-luxe uppercase text-[var(--gold)] flex items-center gap-1.5"
+              style={{ fontFamily: "'Jost', sans-serif" }}>
+              <span className="inline-flex w-5 h-5 rounded-full items-center justify-center"
+                style={{ background: "linear-gradient(135deg, var(--gold), #f0d3a8)" }}>
+                <span className="text-[9px] text-[var(--ink)]">✦</span>
+              </span>
+              AI Content Studio
+            </p>
+            <span className="text-[9px] tracking-luxe uppercase text-[var(--cream)]/40 flex items-center gap-1"
+              style={{ fontFamily: "'Jost', sans-serif" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+              Generating
+            </span>
+          </div>
 
-      <div className="mt-5 border-t border-[var(--cream)]/10 pt-5">
-        <p className="text-[9px] tracking-luxe uppercase text-[var(--cream)]/50" style={{ fontFamily: "'Jost', sans-serif" }}>
-          Generated Caption
-        </p>
-        <p
-          className="mt-2 leading-relaxed text-[var(--cream)]/90"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.02rem" }}
-        >
-          Saturday magic is in the making ✨ Swipe to see how we prep for our busiest day of the week — from first coffee to last client. Slide into our DMs to book your spot. 🌿
-        </p>
-        <p className="mt-3 text-xs text-[var(--gold)]/85" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-          #localsalon #socialmedia #behindthescenes #salonlife
-        </p>
+          <div className="mt-6">
+            <p className="text-[9px] tracking-luxe uppercase text-[var(--cream)]/45"
+              style={{ fontFamily: "'Jost', sans-serif" }}>
+              Prompt
+            </p>
+            <p className="italic mt-2 text-[var(--cream)]/90"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
+              Behind the scenes at our salon this Saturday 🌸
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {["Instagram", "TikTok", "Facebook"].map((p) => (
+              <span key={p}
+                className="text-[9px] tracking-luxe uppercase px-2 py-1 rounded-full border border-[var(--cream)]/15 text-[var(--cream)]/70"
+                style={{ fontFamily: "'Jost', sans-serif" }}>
+                {p}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-5 border-t border-[var(--cream)]/10 pt-5">
+            <div className="flex items-center justify-between">
+              <p className="text-[9px] tracking-luxe uppercase text-[var(--cream)]/45"
+                style={{ fontFamily: "'Jost', sans-serif" }}>
+                Generated Caption
+              </p>
+              <p className="text-[9px] text-[var(--cream)]/35"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                184 / 220
+              </p>
+            </div>
+            <p className="mt-2 leading-relaxed text-[var(--cream)]/95"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
+              Saturday magic is in the making ✨ Swipe to see how we prep for our busiest day of the week — from first coffee to last client. Slide into our DMs to book your spot. 🌿
+              <span className="inline-block w-[2px] h-[1.05rem] align-middle ml-0.5 bg-[var(--gold)] animate-pulse" />
+            </p>
+            <p className="mt-3 text-xs text-[var(--gold)]/90"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              #localsalon #socialmedia #behindthescenes #salonlife
+            </p>
+          </div>
+
+          <div className="mt-5 pt-4 border-t border-[var(--cream)]/10 flex items-center justify-between">
+            <div className="flex gap-2">
+              {["Regenerate", "Edit"].map((b) => (
+                <span key={b}
+                  className="text-[9px] tracking-luxe uppercase px-2.5 py-1.5 rounded-full border border-[var(--cream)]/15 text-[var(--cream)]/70"
+                  style={{ fontFamily: "'Jost', sans-serif" }}>
+                  {b}
+                </span>
+              ))}
+            </div>
+            <span className="text-[9px] tracking-luxe uppercase px-3 py-1.5 rounded-full text-[var(--ink)]"
+              style={{
+                fontFamily: "'Jost', sans-serif",
+                background: "linear-gradient(135deg, var(--gold), #f0d3a8)",
+              }}>
+              Schedule →
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
