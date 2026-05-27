@@ -29,13 +29,8 @@ const LockIcon = ({ className = "" }) => (
     <path d="M8 11V8a4 4 0 1 1 8 0v3" />
   </svg>
 );
-const DoorIcon = ({ className = "" }) => (
-  <svg viewBox="0 0 40 60" fill="none" stroke="currentColor" strokeWidth="1.2" className={className}>
-    <path d="M4 58 V20 a16 16 0 0 1 32 0 V58 Z" />
-    <circle cx="20" cy="6" r="2.5" fill="currentColor" stroke="none" />
-    <path d="M20 8 V14" />
-    <circle cx="27" cy="36" r="1" fill="currentColor" stroke="none" />
-  </svg>
+const DoorIcon = ({ className = "" }: { className?: string }) => (
+  <img src={archMark} alt="" className={className} />
 );
 
 /* ─── Shared ──────────────────────────────────────────── */
