@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import bgImage from "@/assets/password-bg.jpg";
 import roseAccent from "@/assets/rose-accent.png";
 import archMark from "@/assets/arch-mark.svg";
@@ -90,39 +90,123 @@ const SectionTitle = ({
 
 /* ─── Nav ─────────────────────────────────────────────── */
 function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const links = [
+    { href: "#services", label: "Services" },
+    { href: "#pricing", label: "Pricing" },
+    { href: "#faq", label: "FAQ" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
-    <nav className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-6 md:px-12 py-6">
-      <a href="#" className="flex flex-col leading-none">
-        <span
-          className="text-[var(--rose)] italic"
-          style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "1.4rem" }}
-        >
-          the
-        </span>
-        <span
-          className="text-[var(--rose)] tracking-[0.18em] -mt-1"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "0.95rem" }}
-        >
-          DOLLHOUSE
-        </span>
-      </a>
+    <>
+      <nav
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
+          scrolled ? "py-3" : "py-6"
+        }`}
+        style={{
+          backgroundColor: scrolled
+            ? "color-mix(in oklab, var(--cream) 80%, transparent)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
+          borderBottom: scrolled
+            ? "1px solid color-mix(in oklab, var(--gold) 22%, transparent)"
+            : "1px solid transparent",
+        }}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10">
+          <a href="#" className="flex flex-col leading-none shrink-0">
+            <span
+              className="text-[var(--rose)] italic"
+              style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "1.4rem" }}
+            >
+              the
+            </span>
+            <span
+              className="text-[var(--rose)] tracking-[0.18em] -mt-1"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "0.95rem" }}
+            >
+              DOLLHOUSE
+            </span>
+          </a>
+
+          <div
+            className="hidden md:flex items-center gap-10 text-[10px] tracking-luxe uppercase text-[var(--ink)]/80"
+            style={{ fontFamily: "'Jost', sans-serif" }}
+          >
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="nav-link hover:text-[var(--rose)] transition-colors">
+                {l.label}
+              </a>
+            ))}
+          </div>
+
+          <a href="#contact" className="hidden md:inline-flex btn-ink !py-2.5 !px-5 !text-[10px]">
+            Book a Call
+          </a>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            className="md:hidden flex flex-col gap-1.5 p-2 text-[var(--ink)]"
+          >
+            <span
+              className={`block h-px w-6 bg-current transition-transform duration-300 ${
+                open ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-px w-6 bg-current transition-opacity duration-300 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`block h-px w-6 bg-current transition-transform duration-300 ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile sheet */}
       <div
-        className="hidden md:flex items-center gap-9 text-[10px] tracking-luxe uppercase text-[var(--ink)]/75"
-        style={{ fontFamily: "'Jost', sans-serif" }}
+        className={`md:hidden fixed inset-x-0 top-[60px] z-30 transition-all duration-500 ${
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
       >
-        <a href="#services" className="hover:text-[var(--rose)] transition">Services</a>
-        <a href="#pricing" className="hover:text-[var(--rose)] transition">Pricing</a>
-        <a href="#faq" className="hover:text-[var(--rose)] transition">FAQ</a>
-        <a href="#contact" className="hover:text-[var(--rose)] transition">Contact</a>
+        <div
+          className="mx-4 rounded-2xl p-6 flex flex-col gap-5 text-[12px] tracking-luxe uppercase text-[var(--ink)]"
+          style={{
+            fontFamily: "'Jost', sans-serif",
+            background: "color-mix(in oklab, var(--cream) 95%, transparent)",
+            backdropFilter: "blur(18px)",
+            border: "1px solid color-mix(in oklab, var(--gold) 30%, transparent)",
+            boxShadow: "0 30px 60px -25px rgba(120,80,60,0.35)",
+          }}
+        >
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="hover:text-[var(--rose)]">
+              {l.label}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setOpen(false)} className="btn-ink justify-center mt-2">
+            Book a Call
+          </a>
+        </div>
       </div>
-      <a
-        href="#contact"
-        className="rounded-full bg-[var(--ink)] text-[var(--cream)] text-[10px] tracking-luxe uppercase px-5 py-2.5 hover:opacity-90 transition"
-        style={{ fontFamily: "'Jost', sans-serif" }}
-      >
-        Book a Call
-      </a>
-    </nav>
+    </>
   );
 }
 
@@ -130,18 +214,31 @@ function Nav() {
 function Hero() {
   return (
     <header
-      className="relative min-h-screen flex items-center justify-center px-4 pt-28 pb-20"
+      className="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-24 overflow-hidden"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <Nav />
-      <DoorIcon className="hidden lg:block absolute top-[42%] right-[5%] w-16 h-24 text-[var(--gold)]/55" />
+      {/* Soft vignette to lift text contrast */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 0%, rgba(247,228,223,0.35) 75%, rgba(247,228,223,0.6) 100%)",
+        }}
+      />
+      {/* Decorative arches */}
+      <DoorIcon className="hidden lg:block absolute top-[18%] left-[6%] w-14 h-20 text-[var(--gold)]/35 reveal-soft" />
+      <DoorIcon className="hidden lg:block absolute bottom-[14%] right-[7%] w-20 h-28 text-[var(--gold)]/45 reveal-soft" />
 
-      <div className="relative z-10 w-full max-w-[640px] text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/55 bg-white/30 backdrop-blur-sm px-5 py-2 text-[var(--gold)]">
+      <div className="relative z-10 w-full max-w-[680px] text-center">
+        <div
+          className="reveal inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/55 bg-white/40 backdrop-blur-md px-5 py-2 text-[var(--gold)]"
+          style={{ animationDelay: "0.05s" }}
+        >
           <LockIcon className="w-3 h-3" />
           <span
             className="text-[10px] tracking-luxe uppercase font-medium"
@@ -151,66 +248,91 @@ function Hero() {
           </span>
         </div>
 
-        <div className="mt-10 flex justify-center text-[var(--gold)]">
+        <div
+          className="reveal mt-10 flex justify-center text-[var(--gold)]"
+          style={{ animationDelay: "0.15s" }}
+        >
           <DoorIcon className="w-7 h-10" />
         </div>
 
         <p
-          className="text-[var(--rose)] italic mt-2 leading-none"
-          style={{ fontFamily: "'Pinyon Script', cursive", fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+          className="reveal text-[var(--rose)] italic mt-2 leading-none"
+          style={{
+            fontFamily: "'Pinyon Script', cursive",
+            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+            animationDelay: "0.2s",
+          }}
         >
           the
         </p>
         <h1
-          className="text-[var(--rose)] font-normal tracking-[0.04em] leading-[0.95] mt-1"
+          className="reveal text-[var(--rose)] font-normal tracking-[0.04em] leading-[0.95] mt-1"
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "clamp(3.25rem, 8.5vw, 5.5rem)",
+            fontSize: "clamp(3.5rem, 9vw, 6rem)",
+            animationDelay: "0.3s",
           }}
         >
           DOLLHOUSE
         </h1>
         <p
-          className="mt-4 text-[var(--gold)] text-[11px] tracking-luxe uppercase"
-          style={{ fontFamily: "'Jost', sans-serif" }}
+          className="reveal mt-4 text-[var(--gold)] text-[11px] tracking-luxe uppercase"
+          style={{ fontFamily: "'Jost', sans-serif", animationDelay: "0.4s" }}
         >
           brand studio
         </p>
 
-        <Divider />
+        <div className="reveal" style={{ animationDelay: "0.5s" }}>
+          <Divider />
+        </div>
 
         <p
-          className="mt-2 text-[var(--ink)]/75 leading-relaxed max-w-md mx-auto"
-          style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.98rem" }}
+          className="reveal mt-2 text-[var(--ink)]/80 leading-relaxed max-w-md mx-auto"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "1rem",
+            animationDelay: "0.55s",
+          }}
         >
           Your business, everywhere online. AI-powered social media content,
           scheduling, and analytics — done for you, every single day.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href="#pricing"
-            className="rounded-full bg-[var(--ink)] text-[var(--cream)] text-[11px] tracking-luxe uppercase px-8 py-4 hover:opacity-90 transition"
-            style={{ fontFamily: "'Jost', sans-serif" }}
-          >
-            Book a Discovery Call →
+        <div
+          className="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
+          style={{ animationDelay: "0.65s" }}
+        >
+          <a href="#pricing" className="btn-ink">
+            Book a Discovery Call <span aria-hidden>→</span>
           </a>
-          <a
-            href="#services"
-            className="text-[11px] tracking-luxe uppercase text-[var(--ink)]/70 hover:text-[var(--rose)] transition px-4 py-2"
-            style={{ fontFamily: "'Jost', sans-serif" }}
-          >
-            See how it works ↓
+          <a href="#services" className="btn-ghost">
+            See how it works <span aria-hidden>↓</span>
           </a>
         </div>
 
         <p
-          className="mt-6 text-[var(--ink)]/55 italic text-sm"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          className="reveal mt-7 text-[var(--ink)]/55 italic text-sm"
+          style={{ fontFamily: "'Cormorant Garamond', serif", animationDelay: "0.75s" }}
         >
           3-month minimum · All communication by email
         </p>
       </div>
+
+      {/* Scroll hint */}
+      <a
+        href="#services"
+        aria-label="Scroll to services"
+        className="reveal-soft hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-[var(--ink)]/45 hover:text-[var(--rose)] transition-colors"
+        style={{ animationDelay: "1s" }}
+      >
+        <span
+          className="text-[9px] tracking-luxe uppercase"
+          style={{ fontFamily: "'Jost', sans-serif" }}
+        >
+          Scroll
+        </span>
+        <span className="block w-px h-10 bg-current" />
+      </a>
     </header>
   );
 }
