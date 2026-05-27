@@ -18,7 +18,7 @@ function Nav() {
       <Link to="/" className="flex flex-col items-start leading-tight no-underline">
         <span
           className="text-[var(--ink)]/55 font-normal not-italic"
-          style={{ fontFamily: FONT_SCRIPT, fontSize: "18px", letterSpacing: "1px" }}
+          style={{ fontFamily: FONT_SCRIPT, fontSize: "18px", letterSpacing: "1px", textTransform: "lowercase" }}
         >
           the
         </span>
@@ -87,7 +87,7 @@ function Hero() {
           style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(3rem, 8vw, 6rem)" }}
         >
           The{" "}
-          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT }}>
+          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT, textTransform: "lowercase" }}>
             Starter
           </span>{" "}
           Kit
@@ -155,7 +155,7 @@ function WhatsInside() {
             style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}
           >
             Three pieces.{" "}
-            <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT }}>
+            <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT, textTransform: "lowercase" }}>
               One foundation.
             </span>
           </h2>
@@ -180,7 +180,7 @@ function WhatsInside() {
               </h3>
               <p
                 className="mt-1 text-[var(--rose)] italic"
-                style={{ fontFamily: FONT_SCRIPT, fontSize: "1.05rem" }}
+                style={{ fontFamily: FONT_SCRIPT, fontSize: "1.05rem", textTransform: "lowercase" }}
               >
                 {p.tagline}
               </p>
@@ -225,7 +225,7 @@ function Includes() {
           style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
         >
           A complete brand,{" "}
-          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT }}>
+          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT, textTransform: "lowercase" }}>
             delivered today.
           </span>
         </h2>
@@ -259,7 +259,7 @@ function Pricing() {
           style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}
         >
           Get the{" "}
-          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT }}>
+          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT, textTransform: "lowercase" }}>
             Starter Kit
           </span>
         </h2>
@@ -378,7 +378,7 @@ function FooterCTA() {
           style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
         >
           Not ready yet?{" "}
-          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT }}>
+          <span className="italic text-[var(--rose)]" style={{ fontFamily: FONT_SCRIPT, textTransform: "lowercase" }}>
             Stay close.
           </span>
         </h2>
@@ -389,7 +389,7 @@ function FooterCTA() {
           Get a weekly note with brand tips, prompts, and behind-the-scenes from the studio.
         </p>
         {done ? (
-          <p className="mt-8 text-[var(--rose)] italic" style={{ fontFamily: FONT_SCRIPT, fontSize: "1.4rem" }}>
+          <p className="mt-8 text-[var(--rose)] italic" style={{ fontFamily: FONT_SCRIPT, fontSize: "1.4rem", textTransform: "lowercase" }}>
             You're on the list ♡
           </p>
         ) : (

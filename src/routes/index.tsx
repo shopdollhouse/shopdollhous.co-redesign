@@ -114,7 +114,7 @@ function Nav() {
           >
             <span
               className="text-[var(--ink)]/55 font-normal not-italic"
-              style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px" }}
+              style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px", textTransform: "lowercase" }}
             >
               the
             </span>
@@ -264,6 +264,7 @@ function Hero() {
           style={{
             fontFamily: "'Allura', cursive",
             fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+            textTransform: "lowercase",
             animationDelay: "0.2s",
           }}
         >
@@ -1260,7 +1261,7 @@ function Footer() {
     <footer className="border-t border-[var(--gold)]/15 py-12 px-6 text-center">
       <span
         className="text-[var(--ink)]/50 font-normal block"
-        style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px" }}
+        style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px", textTransform: "lowercase" }}
       >
         the
       </span>
