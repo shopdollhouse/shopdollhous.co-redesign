@@ -487,93 +487,162 @@ function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-24 md:py-32 px-6 bg-[var(--cream)]/55">
+    <section
+      id="pricing"
+      className="py-24 md:py-32 px-6"
+      style={{
+        background:
+          "linear-gradient(135deg, #f4dcdc 0%, #f7e6dc 45%, #f1d3cf 100%)",
+      }}
+    >
       <SectionTitle
-        eyebrow="Pricing"
+        eyebrow="Style Packages"
         title="Choose your plan"
         italic="Done-for-you monthly retainer. 3-month minimum."
       />
-      <div className="mt-14 max-w-6xl mx-auto grid md:grid-cols-3 gap-6 items-start">
-        {tiers.map((t) => (
-          <div
-            key={t.name}
-            className={`relative rounded-2xl p-10 border ${
-              t.featured
-                ? "bg-[var(--ink)] text-[var(--cream)] border-[var(--ink)] shadow-[0_30px_60px_-30px_rgba(80,40,40,0.5)] md:-mt-6 md:mb-6"
-                : "bg-white/75 backdrop-blur-sm text-[var(--ink)] border-white/80 shadow-[0_20px_40px_-25px_rgba(180,120,120,0.3)]"
-            }`}
-          >
-            {t.featured && (
-              <span
-                className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-luxe uppercase px-4 py-1 rounded-full"
-                style={{
-                  backgroundColor: "var(--gold)",
-                  color: "var(--ink)",
-                  fontFamily: "'Jost', sans-serif",
-                }}
-              >
-                Most Popular
-              </span>
-            )}
-            <p
-              className={`text-[11px] tracking-luxe uppercase ${t.featured ? "text-[var(--gold)]" : "text-[var(--gold)]"}`}
-              style={{ fontFamily: "'Jost', sans-serif" }}
-            >
-              {t.name}
-            </p>
-            <p
-              className="mt-4"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "3rem",
-                lineHeight: 1,
-              }}
-            >
-              {t.price}
-              <span
-                className="opacity-60 ml-1"
-                style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem" }}
-              >
-                /mo USD
-              </span>
-            </p>
-            <p
-              className={`italic mt-3 ${t.featured ? "text-[var(--cream)]/80" : "text-[var(--ink)]/70"}`}
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem" }}
-            >
-              {t.tagline}
-            </p>
-
-            <ul className="mt-7 space-y-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              {t.features.map((f) => (
-                <li key={f} className="flex gap-3 text-sm">
-                  <span className={t.featured ? "text-[var(--gold)]" : "text-[var(--rose)]"}>✦</span>
-                  <span className={t.featured ? "text-[var(--cream)]/85" : "text-[var(--ink)]/75"}>
-                    {f}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#contact"
-              className={`mt-9 block text-center rounded-full text-[11px] tracking-luxe uppercase px-6 py-4 transition ${
-                t.featured
-                  ? "bg-[var(--cream)] text-[var(--ink)] hover:opacity-90"
-                  : "bg-[var(--ink)] text-[var(--cream)] hover:opacity-90"
+      <div className="mt-14 max-w-6xl mx-auto space-y-8">
+        {tiers.map((t) => {
+          const isDark = !!t.featured;
+          return (
+            <article
+              key={t.name}
+              className={`relative rounded-[28px] overflow-hidden ${
+                isDark
+                  ? "bg-[var(--ink)] text-[var(--cream)] shadow-[0_30px_60px_-25px_rgba(60,30,30,0.45)]"
+                  : ""
               }`}
-              style={{ fontFamily: "'Jost', sans-serif" }}
+              style={
+                isDark
+                  ? undefined
+                  : {
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(252,238,235,0.92) 100%)",
+                      border: "1px solid color-mix(in oklab, var(--gold) 45%, transparent)",
+                      boxShadow:
+                        "0 25px 55px -25px rgba(180,120,120,0.35), inset 0 1px 0 rgba(255,255,255,0.6)",
+                    }
+              }
             >
-              Book a Discovery Call →
-            </a>
-            <p
-              className={`mt-3 text-[10px] text-center italic ${t.featured ? "text-[var(--cream)]/50" : "text-[var(--ink)]/45"}`}
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              3-month minimum · all communication by email
-            </p>
-          </div>
-        ))}
+              {t.featured && (
+                <span
+                  className="absolute top-6 right-6 text-[10px] tracking-luxe uppercase px-3 py-1.5 rounded-full"
+                  style={{
+                    backgroundColor: "var(--gold)",
+                    color: "var(--ink)",
+                    fontFamily: "'Jost', sans-serif",
+                  }}
+                >
+                  Most Popular
+                </span>
+              )}
+
+              <div className="p-10 md:p-12">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8 border-b border-current/10">
+                  <div>
+                    <p
+                      className="text-[var(--gold)] text-[11px] tracking-luxe uppercase"
+                      style={{ fontFamily: "'Jost', sans-serif" }}
+                    >
+                      The {t.name} Package
+                    </p>
+                    <h3
+                      className={`mt-2 italic ${isDark ? "text-[var(--cream)]/90" : "text-[var(--ink)]/80"}`}
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
+                      }}
+                    >
+                      {t.tagline}
+                    </h3>
+                  </div>
+                  <div className="text-right whitespace-nowrap">
+                    <span
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        fontSize: "clamp(2.75rem, 4vw, 3.5rem)",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {t.price}
+                    </span>
+                    <span
+                      className={`ml-1 ${isDark ? "text-[var(--cream)]/60" : "text-[var(--ink)]/55"}`}
+                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem" }}
+                    >
+                      /mo USD
+                    </span>
+                  </div>
+                </div>
+
+                {/* At-a-glance grid */}
+                <p
+                  className="mt-8 text-[var(--gold)] text-[11px] tracking-luxe uppercase"
+                  style={{ fontFamily: "'Jost', sans-serif" }}
+                >
+                  What's Included
+                </p>
+                <ul className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {t.features.map((f, i) => (
+                    <li
+                      key={f}
+                      className="rounded-2xl p-4 min-h-[110px] flex flex-col justify-between"
+                      style={{
+                        background: isDark
+                          ? "rgba(255,255,255,0.05)"
+                          : "color-mix(in oklab, var(--cream) 55%, white)",
+                        border: `1px solid ${
+                          isDark
+                            ? "rgba(255,255,255,0.08)"
+                            : "color-mix(in oklab, var(--gold) 25%, transparent)"
+                        }`,
+                      }}
+                    >
+                      <span
+                        className="text-[var(--gold)] text-[9.5px] tracking-luxe uppercase"
+                        style={{ fontFamily: "'Jost', sans-serif" }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`mt-2 leading-snug ${
+                          isDark ? "text-[var(--cream)]/90" : "text-[var(--ink)]/85"
+                        }`}
+                        style={{
+                          fontFamily: "'Cormorant Garamond', serif",
+                          fontSize: "1.05rem",
+                        }}
+                      >
+                        {f}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <p
+                    className={`italic text-sm ${isDark ? "text-[var(--cream)]/55" : "text-[var(--ink)]/50"}`}
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  >
+                    3-month minimum · all communication by email
+                  </p>
+                  <a
+                    href="#contact"
+                    className={`inline-block text-center rounded-full text-[11px] tracking-luxe uppercase px-8 py-3.5 transition ${
+                      isDark
+                        ? "bg-[var(--cream)] text-[var(--ink)] hover:opacity-90"
+                        : "bg-[var(--ink)] text-[var(--cream)] hover:opacity-90"
+                    }`}
+                    style={{ fontFamily: "'Jost', sans-serif" }}
+                  >
+                    Book a Discovery Call →
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
