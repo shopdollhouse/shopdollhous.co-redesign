@@ -590,7 +590,6 @@ function Pricing() {
       name: "Starter",
       price: "$1,000",
       tagline: "Get visible. Get consistent.",
-      topBadge: { label: "Start Here", tone: "gold" as const },
       trial: "14-day free trial",
       cta: "Get Started →",
       features: [
@@ -605,28 +604,11 @@ function Pricing() {
       ],
     },
     {
-      name: "Growth",
-      price: "$2,500",
-      tagline: "More reach. More leads. More revenue.",
-      featured: true,
-      topBadge: { label: "Most Popular", tone: "taupe" as const },
-      cta: "Book a Call →",
-      features: [
-        "3 Accounts",
-        "AI automation",
-        "2 AI Agents",
-        "Social media management (all platforms)",
-        "Social media ad creation & management",
-        "Email marketing automations",
-        "Content calendar & strategy",
-        "Advanced analytics dashboard",
-        "Monthly strategy session",
-      ],
-    },
-    {
       name: "Elite",
       price: "$5,000+",
       tagline: "Full-service. Everything handled.",
+      featured: true,
+      topBadge: { label: "Most Popular", tone: "taupe" as const },
       cta: "Apply for Elite →",
       features: [
         "3 Accounts",
@@ -640,6 +622,23 @@ function Pricing() {
         "Website or landing page funnel",
         "Bi-weekly strategy calls",
         "Weekly performance reports",
+      ],
+    },
+    {
+      name: "Growth",
+      price: "$2,500",
+      tagline: "More reach. More leads. More revenue.",
+      cta: "Book a Call →",
+      features: [
+        "3 Accounts",
+        "AI automation",
+        "2 AI Agents",
+        "Social media management (all platforms)",
+        "Social media ad creation & management",
+        "Email marketing automations",
+        "Content calendar & strategy",
+        "Advanced analytics dashboard",
+        "Monthly strategy session",
       ],
     },
   ];
@@ -668,10 +667,7 @@ function Pricing() {
                   className="absolute -top-1 left-1/2 -translate-x-1/2 z-10 px-6 py-2 rounded-full text-[10px] tracking-luxe uppercase whitespace-nowrap"
                   style={{
                     fontFamily: "'Jost', sans-serif",
-                    backgroundColor:
-                      t.topBadge.tone === "gold"
-                        ? "var(--gold)"
-                        : "color-mix(in oklab, var(--gold) 35%, #d9b9a8)",
+                    backgroundColor: "var(--gold)",
                     color: "var(--ink)",
                     boxShadow: "0 8px 20px -10px rgba(120,80,60,0.35)",
                   }}
