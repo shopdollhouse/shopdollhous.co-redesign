@@ -786,15 +786,19 @@ function Pricing() {
                     className="flex-1 h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                        isFilled
+                          ? "linear-gradient(90deg, transparent, rgba(201,122,122,0.5), transparent)"
+                          : "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
                     }}
                   />
-                  <span style={{ color: "var(--gold)", fontSize: "0.7rem" }}>♥</span>
+                  <span style={{ color: isFilled ? "#c97a7a" : "var(--gold)", fontSize: "0.7rem" }}>♥</span>
                   <span
                     className="flex-1 h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
+                        isFilled
+                          ? "linear-gradient(90deg, transparent, rgba(201,122,122,0.5), transparent)"
+                          : "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 50%, transparent), transparent)",
                     }}
                   />
                 </div>
@@ -812,7 +816,7 @@ function Pricing() {
                     >
                       <span
                         className="mt-1 shrink-0"
-                        style={{ color: "var(--gold)", fontSize: "0.7rem" }}
+                        style={{ color: isFilled ? "#c97a7a" : "var(--gold)", fontSize: "0.7rem" }}
                       >
                         ✦
                       </span>
