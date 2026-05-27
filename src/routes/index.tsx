@@ -984,6 +984,7 @@ function Footer() {
 function Index() {
   return (
     <main className="bg-[var(--blush)] text-[var(--ink)]">
+      <Nav />
       <Hero />
       <TrustBar />
       <Services />
