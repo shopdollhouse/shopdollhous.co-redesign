@@ -262,7 +262,7 @@ function Hero() {
         <p
           className="reveal text-[var(--rose)] italic mt-2 leading-none"
           style={{
-            fontFamily: "'Pinyon Script', cursive",
+            fontFamily: "'Allura', cursive",
             fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
             animationDelay: "0.2s",
           }}
