@@ -7,7 +7,7 @@ import archMark from "@/assets/arch-mark.svg";
 export const Route = createFileRoute("/starter-kit")({ component: StarterKitPage });
 
 const FONT_DISPLAY = "'Cormorant Garamond', serif";
-const FONT_SCRIPT = "'Pinyon Script', cursive";
+const FONT_SCRIPT = "'Allura', cursive";
 const FONT_BODY = "'DM Sans', sans-serif";
 const FONT_LUXE = "'Jost', sans-serif";
 
@@ -18,7 +18,7 @@ function Nav() {
       <Link to="/" className="flex flex-col items-start leading-tight no-underline">
         <span
           className="text-[var(--ink)]/55 font-normal not-italic"
-          style={{ fontFamily: FONT_DISPLAY, fontSize: "9px", letterSpacing: "4px" }}
+          style={{ fontFamily: FONT_SCRIPT, fontSize: "18px", letterSpacing: "1px" }}
         >
           the
         </span>

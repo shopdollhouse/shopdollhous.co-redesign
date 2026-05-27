@@ -114,7 +114,7 @@ function Nav() {
           >
             <span
               className="text-[var(--ink)]/55 font-normal not-italic"
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", letterSpacing: "4px" }}
+              style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px" }}
             >
               the
             </span>
@@ -1260,7 +1260,7 @@ function Footer() {
     <footer className="border-t border-[var(--gold)]/15 py-12 px-6 text-center">
       <span
         className="text-[var(--ink)]/50 font-normal block"
-        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", letterSpacing: "4px" }}
+        style={{ fontFamily: "'Allura', cursive", fontSize: "18px", letterSpacing: "1px" }}
       >
         the
       </span>
