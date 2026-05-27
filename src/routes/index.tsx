@@ -570,8 +570,12 @@ function Pricing() {
       price: "$1,000",
       tagline: "Get visible. Get consistent.",
       topBadge: { label: "Start Here", tone: "gold" as const },
+      trial: "14-day free trial",
       cta: "Get Started →",
       features: [
+        "1 Account",
+        "AI automation",
+        "1 AI Agents",
         "Social media management (1 platform)",
         "Content creation & scheduling",
         "Branded posts published for you",
@@ -587,6 +591,9 @@ function Pricing() {
       topBadge: { label: "Most Popular", tone: "taupe" as const },
       cta: "Book a Call →",
       features: [
+        "5 Accounts",
+        "AI automation",
+        "Complete AI Agents",
         "Social media management (all platforms)",
         "Social media ad creation & management",
         "Email marketing automations",
@@ -601,6 +608,9 @@ function Pricing() {
       tagline: "Full-service. Everything handled.",
       cta: "Apply for Elite →",
       features: [
+        "3 Accounts",
+        "AI automation",
+        "2 AI Agents",
         "Facebook & Instagram ad management",
         "Social media management (all platforms)",
         "Google ad campaigns",
@@ -693,6 +703,20 @@ function Pricing() {
                 >
                   <span style={{ color: "var(--gold)" }}>✦</span> Monthly Retainer
                 </div>
+
+                {(t as any).trial && (
+                  <div
+                    className="mt-3 inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full text-[10px] tracking-luxe uppercase"
+                    style={{
+                      fontFamily: "'Jost', sans-serif",
+                      color: "var(--ink)",
+                      backgroundColor: "var(--gold)",
+                      boxShadow: "0 8px 20px -10px rgba(120,80,60,0.4)",
+                    }}
+                  >
+                    ★ {(t as any).trial}
+                  </div>
+                )}
 
                 {/* Price */}
                 <div className="mt-7 flex items-baseline gap-2">
