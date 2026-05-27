@@ -704,6 +704,20 @@ function Pricing() {
                   <span style={{ color: "var(--gold)" }}>✦</span> Monthly Retainer
                 </div>
 
+                {(t as any).trial && (
+                  <div
+                    className="mt-3 inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full text-[10px] tracking-luxe uppercase"
+                    style={{
+                      fontFamily: "'Jost', sans-serif",
+                      color: "var(--ink)",
+                      backgroundColor: "var(--gold)",
+                      boxShadow: "0 8px 20px -10px rgba(120,80,60,0.4)",
+                    }}
+                  >
+                    ★ {(t as any).trial}
+                  </div>
+                )}
+
                 {/* Price */}
                 <div className="mt-7 flex items-baseline gap-2">
                   <span
