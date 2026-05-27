@@ -260,7 +260,7 @@ function Hero() {
         </div>
 
         <p
-          className="reveal text-[var(--rose)] italic mt-2 leading-none"
+          className="reveal text-[var(--ink)] italic mt-2 leading-none"
           style={{
             fontFamily: "'Allura', cursive",
             fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
